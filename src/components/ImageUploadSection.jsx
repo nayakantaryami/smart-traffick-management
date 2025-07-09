@@ -3,15 +3,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Upload, Image, X } from "lucide-react";
 
-const ImageUploadSection = ({ uploadedImages, onImageUpload }: { 
-  uploadedImages: Record<string, any>, 
-  onImageUpload: (direction: string, file: File | null) => void 
-}) => {
+const ImageUploadSection = ({ uploadedImages, onImageUpload }) => {
   const fileInputRefs = {
-    north: useRef<HTMLInputElement>(null),
-    south: useRef<HTMLInputElement>(null),
-    east: useRef<HTMLInputElement>(null),
-    west: useRef<HTMLInputElement>(null)
+    north: useRef(null),
+    south: useRef(null),
+    east: useRef(null),
+    west: useRef(null)
   };
 
   const directions = [
@@ -21,7 +18,7 @@ const ImageUploadSection = ({ uploadedImages, onImageUpload }: {
     { key: "west", label: "West", icon: "←", gradient: "bg-gradient-west", color: "border-direction-west/30" }
   ];
 
-  const handleFileSelect = (direction: string, event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileSelect = (direction, event) => {
     const file = event.target.files[0];
     if (file) {
       // Validate file type
@@ -40,7 +37,7 @@ const ImageUploadSection = ({ uploadedImages, onImageUpload }: {
     }
   };
 
-  const handleRemoveImage = (direction: string) => {
+  const handleRemoveImage = (direction) => {
     if (uploadedImages[direction]?.url) {
       URL.revokeObjectURL(uploadedImages[direction].url);
     }

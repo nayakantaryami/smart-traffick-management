@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Clock, TrendingUp } from "lucide-react";
 
-const SignalDurationDisplay = ({ durations }: { durations: Record<string, number> }) => {
+const SignalDurationDisplay = ({ durations }) => {
   const directions = [
     { key: "north", label: "North", icon: "↑", gradient: "bg-gradient-north", textColor: "text-direction-north" },
     { key: "south", label: "South", icon: "↓", gradient: "bg-gradient-south", textColor: "text-direction-south" },
@@ -9,7 +9,7 @@ const SignalDurationDisplay = ({ durations }: { durations: Record<string, number
     { key: "west", label: "West", icon: "←", gradient: "bg-gradient-west", textColor: "text-direction-west" }
   ];
 
-  const totalCycle = Object.values(durations).reduce((sum: number, duration: number) => sum + duration, 0);
+  const totalCycle = Object.values(durations).reduce((sum, duration) => sum + duration, 0);
   const averageDuration = Math.round(totalCycle / 4);
 
   return (
