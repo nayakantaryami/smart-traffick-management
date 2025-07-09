@@ -7,18 +7,18 @@ import ImageUploadSection from "./ImageUploadSection";
 import SignalDurationDisplay from "./SignalDurationDisplay";
 
 const TrafficDashboard = () => {
-  const [uploadedImages, setUploadedImages] = useState({
+  const [uploadedImages, setUploadedImages] = useState<Record<string, any>>({
     north: null,
     south: null,
     east: null,
     west: null
   });
   
-  const [signalDurations, setSignalDurations] = useState(null);
+  const [signalDurations, setSignalDurations] = useState<Record<string, number> | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const { toast } = useToast();
 
-  const handleImageUpload = (direction, file) => {
+  const handleImageUpload = (direction: string, file: File | null) => {
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setUploadedImages(prev => ({
